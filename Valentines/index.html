@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Will you be my Valentine?</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffe6f0;
+      text-align: center;
+      padding-top: 100px;
+    }
+
+    h1 {
+      color: #ff4d88;
+    }
+
+    button {
+      font-size: 20px;
+      padding: 15px 30px;
+      margin: 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    #yes {
+      background-color: #ff4d88;
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    #no {
+      background-color: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Will you be my Valentine? 💘</h1>
+
+  <button id="yes" onclick="yesClicked()">Yes 💖</button>
+  <button id="no" onclick="noClicked()">No 😢</button>
+
+  <script>
+    let noCount = 0;
+    const noTexts = [
+      "Are you sure? 🥺",
+      "Really sure?? 😭",
+      "Why not? 💔",
+      "Think again 👀",
+      "Elías pls 😔",
+      "Last chance 💘"
+    ];
+
+    function noClicked() {
+      noCount++;
+      const yesButton = document.getElementById("yes");
+      yesButton.style.transform = `scale(${1 + noCount * 0.3})`;
+
+      const noButton = document.getElementById("no");
+      noButton.innerText = noTexts[Math.min(noCount, noTexts.length - 1)];
+    }
+
+    function yesClicked() {
+      document.body.innerHTML = `
+        <h1>YAYYYYY 💖🥰</h1>
+        <h2>I love you so much 💕</h2>
+        <p>You are my favorite person ever 🐧🍌</p>
+      `;
+    }
+  </script>
+
+</body>
+</html>
