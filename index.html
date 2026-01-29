@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Will you be my Valentine?</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffe6f0;
+      text-align: center;
+      padding-top: 50px;
+    }
+
+    img {
+      width: 260px;
+      margin-bottom: 20px;
+      border-radius: 15px;
+    }
+
+    h1 {
+      color: #ff4d88;
+    }
+
+    button {
+      font-size: 20px;
+      padding: 15px 30px;
+      margin: 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    #yes {
+      background-color: #ff4d88;
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    #no {
+      background-color: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- GIF INICIAL -->
+  <img id="gif" src="gif1.gif">
+
+  <h1>Will you be my Valentine? 💘</h1>
+
+  <button id="yes" onclick="yesClicked()">Yes 💖</button>
+  <button id="no" onclick="noClicked()">No 😭</button>
+
+  <script>
+    let noCount = 0;
+    const noTexts = [
+      "Seguro?",
+      "Seguro segurito?",
+      "Elías 😭",
+      "A ver piénsalo de nuevo",
+      "Elíaaaaas",
+      "Ándaleeeeeeeee",
+      "Poqueeeeeeeee",
+      "miiiiaaaaauuuuuuuuuu"
+    ];
+
+    function noClicked() {
+      noCount++;
+      const yesButton = document.getElementById("yes");
+      yesButton.style.transform = `scale(${1 + noCount * 0.35})`;
+
+      const noButton = document.getElementById("no");
+      noButton.innerText = noTexts[Math.min(noCount, noTexts.length - 1)];
+    }
+
+    function yesClicked() {
+      document.body.innerHTML = `
+        <img src="gif2.gif" style="width:280px;border-radius:15px;"><br>
+        <h1>YEEEEIII</h1>
+        <h2>Te amo muchi Elías guapo</h2>
+        <p>Eres mi persona favorita en el mundoooo</p>
+      `;
+    }
+  </script>
+
+</body>
+</html>
