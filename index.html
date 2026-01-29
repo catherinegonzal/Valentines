@@ -1,111 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Will you be my Valentine? <3</title>
+<meta charset="UTF-8">
+<title>Will you be my Valentine?</title>
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #ffe6f0;
-      text-align: center;
-      padding-top: 40px;
-    }
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    text-align: center;
+    padding-top: 80px;
+  }
 
-    img {
-      width: 280px;
-      height: auto;
-      margin-bottom: 20px;
-      border-radius: 15px;
-      transition: 0.3s ease;
-    }
+  img {
+    width: 220px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+  }
 
-    h1 {
-      color: #ff4d88;
-    }
+  h1 {
+    font-size: 26px;
+    margin-bottom: 25px;
+  }
 
-    #buttons {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      margin-top: 10px;
-      position: relative;
-    }
+  .buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 10px;
+  }
 
-    button {
-      font-size: 20px;
-      padding: 15px 30px;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-      min-width: 120px;
-      position: relative;
-    }
+  button {
+    padding: 12px 26px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.25s ease;
+  }
 
-    #yes {
-      background-color: #ff4d88;
-      color: white;
-      z-index: 2;
-    }
+  #yes {
+    background-color: #22c55e;
+    color: white;
+    transform-origin: center;
+  }
 
-    #no {
-      background-color: #ccc;
-      z-index: 1;
-    }
-  </style>
+  #no {
+    background-color: #b91c1c;
+    color: white;
+  }
+</style>
 </head>
 
 <body>
 
-  <img id="gif" src="gif1.gif">
+<img id="gif" src="gif1.gif">
 
-  <h1>Will you be my Valentine?</h1>
+<h1>Will you be my Valentine?</h1>
 
-  <div id="buttons">
-    <button id="yes" onclick="yesClicked()">Yes</button>
-    <button id="no" onclick="noClicked()">No</button>
-  </div>
+<div class="buttons">
+  <button id="yes" onclick="yesClicked()">Yes</button>
+  <button id="no" onclick="noClicked()">Seguro?</button>
+</div>
 
-  <script>
-    let noCount = 0;
+<script>
+let noCount = 0;
 
-    const noTexts = [
-      "Seguro?",
-      "Seguro segurito?",
-      "Elías 😭",
-      "A ver piénsalo de nuevo",
-      "Elíaaaaas",
-      "Ándaleeeeeeeee",
-      "Poqueeeeeeeee",
-      "miiiiaaaaauuuuuuuuuu",
-      "Segurisisisisisisimo?",
-      "MIIIIIIAAAAAAAAUUU",
-      "GGGGRRRRR"
-    ];
+const noTexts = [
+  "Seguro?",
+  "Seguro segurito?",
+  "Elías 😭",
+  "A ver piénsalo de nuevo",
+  "Elíaaaaas",
+  "Ándaleeeeee",
+  "Poqueeeeeee",
+  "miiiiaaaauuuu",
+  "Segurisisisimo?",
+  "MIIIIIIAAAAAUU",
+  "GGGGRRRRR"
+];
 
-    function noClicked() {
-      noCount++;
+function noClicked() {
+  noCount++;
 
-      const yesButton = document.getElementById("yes");
-      yesButton.style.transform = `scale(${1 + noCount * 0.25})`;
+  const yes = document.getElementById("yes");
+  yes.style.transform = `scale(${1 + noCount * 0.15})`;
 
-      const noButton = document.getElementById("no");
-      noButton.innerText = noTexts[Math.min(noCount, noTexts.length - 1)];
+  const no = document.getElementById("no");
+  no.innerText = noTexts[Math.min(noCount, noTexts.length - 1)];
 
-      const gif = document.getElementById("gif");
-      gif.src = "gifsad.gif";
-    }
+  document.getElementById("gif").src = "gifsad.gif";
+}
 
-    function yesClicked() {
-      document.body.innerHTML = `
-        <img src="gif2.gif" style="width:280px;border-radius:15px;"><br>
-        <h1>YEEEEIII</h1>
-        <h2>Te amo muchi, Elías guapo</h2>
-        <p>Eres mi persona favorita en el mundoooo</p>
-      `;
-    }
-  </script>
+function yesClicked() {
+  document.body.innerHTML = `
+    <img src="gif2.gif" style="width:240px;border-radius:12px;"><br>
+    <h1>YEEEEIII<3</h1>
+    <h2>Te amo muchi, Elías guapo</h2>
+    <p>Eres mi persona favorita en el mundoooo</p>
+  `;
+}
+</script>
 
 </body>
 </html>
