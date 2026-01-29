@@ -27,8 +27,9 @@
     #buttons {
       display: flex;
       justify-content: center;
-      gap: 25px;
+      gap: 30px;
       margin-top: 10px;
+      position: relative;
     }
 
     button {
@@ -39,22 +40,24 @@
       cursor: pointer;
       transition: transform 0.3s ease;
       min-width: 120px;
+      position: relative;
     }
 
     #yes {
       background-color: #ff4d88;
       color: white;
+      z-index: 2;
     }
 
     #no {
       background-color: #ccc;
+      z-index: 1;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- GIF -->
   <img id="gif" src="gif1.gif">
 
   <h1>Will you be my Valentine?</h1>
@@ -97,7 +100,7 @@
     function yesClicked() {
       document.body.innerHTML = `
         <img src="gif2.gif" style="width:280px;border-radius:15px;"><br>
-        <h1>YEEEEIII<3</h1>
+        <h1>YEEEEIII</h1>
         <h2>Te amo muchi, Elías guapo</h2>
         <p>Eres mi persona favorita en el mundoooo</p>
       `;
