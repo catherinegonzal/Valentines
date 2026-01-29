@@ -2,67 +2,154 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Will you be my Valentine?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
   body {
-    font-family: Arial, sans-serif;
-    background-color: #ffffff;
+    font-family: 'Poppins', Arial, sans-serif;
+    background: linear-gradient(135deg, #ffeef8 0%, #fff5f7 100%);
     text-align: center;
-    padding-top: 70px;
+    padding-top: 50px;
     overflow: hidden;
+    min-height: 100vh;
   }
+  
   img {
-    width: 260px;
-    margin-bottom: 18px;
-    border-radius: 16px;
+    width: 280px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.1));
   }
+  
   h1 {
-    font-size: 28px;
-    margin-bottom: 25px;
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #2d2d2d;
+    letter-spacing: -0.5px;
   }
+  
   .buttons {
     display: inline-flex;
     justify-content: center;
     align-items: center;
     gap: 20px;
-    margin-top: 30px; /* Más espacio desde el título */
+    margin-top: 30px;
   }
+  
   button {
-    padding: 16px 34px;
-    font-size: 20px;
+    padding: 18px 40px;
+    font-size: 22px;
+    font-weight: 600;
     border: none;
-    border-radius: 16px;
+    border-radius: 20px;
     cursor: pointer;
     transition: all 0.25s ease;
     white-space: nowrap;
     position: relative;
+    font-family: 'Poppins', Arial, sans-serif;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
   }
+  
+  button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  }
+  
+  button:active {
+    transform: translateY(0);
+  }
+  
   #yes {
-    background-color: #22c55e;
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
     color: white;
     transform-origin: center center;
     z-index: 1;
+    font-size: 26px; /* Letra más grande */
+    font-weight: 700; /* Más gruesa */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
   }
+  
+  #yes:hover {
+    background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+  }
+  
   #no {
-    background-color: #ef4444;
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
     color: white;
-    min-width: 120px;
+    min-width: 140px;
     text-align: center;
     z-index: 2;
+    font-size: 18px; /* Letra más pequeña */
+    font-weight: 500;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
   }
+  
+  #no:hover {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  }
+  
   .confetti {
     position: fixed;
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
     top: -10px;
     animation: fall 3s linear forwards;
     opacity: 0.95;
     pointer-events: none;
+    border-radius: 50%;
   }
+  
   @keyframes fall {
     to {
-      transform: translateY(110vh) rotate(360deg);
+      transform: translateY(110vh) rotate(720deg);
     }
+  }
+  
+  .success-container {
+    animation: fadeIn 0.5s ease-in;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  .success-container h1 {
+    font-size: 48px;
+    color: #22c55e;
+    margin: 20px 0;
+    text-shadow: 0 2px 10px rgba(34, 197, 94, 0.3);
+  }
+  
+  .success-container h2 {
+    font-size: 28px;
+    color: #ef4444;
+    margin: 15px 0;
+    font-weight: 600;
+  }
+  
+  .success-container p {
+    font-size: 20px;
+    color: #6b7280;
+    font-weight: 400;
+    line-height: 1.6;
   }
 </style>
 </head>
@@ -97,19 +184,18 @@ const noTexts = [
   "Amor dale que siiii",
   "GGGGRRRRRRRR"
 ];
+
 function noClicked() {
   noCount++;
   const yes = document.getElementById("yes");
   const scale = 1 + noCount * 0.35;
   yes.style.transform = `scale(${scale})`;
   
-  // Aumenta el gap entre botones para que no se toquen
   const buttons = document.getElementById("buttons");
-  const newGap = 20 + (noCount * 15); // Aumenta 15px por cada click
+  const newGap = 20 + (noCount * 18); // Aumenté a 18px para más separación
   buttons.style.gap = newGap + "px";
   
-  // Mueve todo hacia abajo
-  const newMargin = 30 + (noCount * 10); // Aumenta 10px por cada click
+  const newMargin = 30 + (noCount * 12); // Aumenté a 12px
   buttons.style.marginTop = newMargin + "px";
   
   const no = document.getElementById("no");
@@ -117,35 +203,43 @@ function noClicked() {
   
   document.getElementById("gif").src = "gifsad.gif";
 }
+
 function yesClicked() {
   document.getElementById("buttons").remove();
   document.getElementById("title").remove();
   document.getElementById("gif").src = "gif2.gif";
+  
   setTimeout(() => {
     document.body.innerHTML = `
-      <img src="gif2.gif" style="width:320px;border-radius:16px;"><br>
-      <h1>YEEEEIII<3</h1>
-      <h2>Te amo muchi Elías guapo</h2>
-      <p>Eres mi persona favorita en el mundo mundial universal</p>
+      <div class="success-container">
+        <img src="gif2.gif" style="width:340px;border-radius:20px;filter:drop-shadow(0 4px 12px rgba(0,0,0,0.1));">
+        <h1>YEEEEIII ❤️</h1>
+        <h2>Te amo muchi Elías guapo</h2>
+        <p>Eres mi persona favorita en el mundo mundial universal</p>
+      </div>
     `;
+    
     setTimeout(() => {
       launchConfetti();
     }, 120);
   }, 200);
 }
+
 function launchConfetti() {
-  for (let i = 0; i < 200; i++) {
+  for (let i = 0; i < 250; i++) {
     const confetti = document.createElement("div");
     confetti.classList.add("confetti");
     confetti.style.left = Math.random() * window.innerWidth + "px";
     confetti.style.backgroundColor = randomColor();
     confetti.style.animationDuration = (2 + Math.random() * 2) + "s";
+    confetti.style.animationDelay = (Math.random() * 0.3) + "s";
     document.body.appendChild(confetti);
-    setTimeout(() => confetti.remove(), 3000);
+    setTimeout(() => confetti.remove(), 4000);
   }
 }
+
 function randomColor() {
-  const colors = ["#ff4d6d", "#fbbf24", "#22c55e", "#3b82f6", "#a855f7"];
+  const colors = ["#ff4d6d", "#fbbf24", "#22c55e", "#3b82f6", "#a855f7", "#ec4899", "#f97316"];
   return colors[Math.floor(Math.random() * colors.length)];
 }
 </script>
