@@ -39,6 +39,7 @@
   }
   
   .buttons {
+    position: relative;
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -70,26 +71,26 @@
     transform: translateY(0);
   }
   
- #yes {
-  background-color: #22c55e;
-  color: white;
-  transform-origin: center center;
-  z-index: 1;
-  font-size: 28px;
-  font-weight: 700;
-  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
-}
+  #yes {
+    background-color: #22c55e;
+    color: white;
+    transform-origin: center center;
+    z-index: 1;
+    font-size: 28px;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+  }
 
-#no {
-  background-color: #ef4444;
-  color: white;
-  min-width: 140px;
-  text-align: center;
-  z-index: 2;
-  font-size: 18px;
-  font-weight: 500;
-  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
-}
+  #no {
+    background-color: #ef4444;
+    color: white;
+    min-width: 140px;
+    text-align: center;
+    z-index: 2;
+    font-size: 18px;
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+  }
   
   
   .confetti {
@@ -175,7 +176,10 @@ const noTexts = [
   "Eeelííííííííaaaaaaas",
   "GGGGRRRRRRRR",
   "Amor dale que siiii",
-  "GGGGRRRRRRRR"
+  "GGGGRRRRRRRR",
+ "Mi amooor ándale",
+ "Dale yes of course my horse",
+ "GGGRRRRR"
 ];
 
 function noClicked() {
@@ -185,13 +189,16 @@ function noClicked() {
   yes.style.transform = `scale(${scale})`;
   
   const buttons = document.getElementById("buttons");
-  const newGap = 20 + (noCount * 18); // Aumenté a 18px para más separación
+  const newGap = 20 + (noCount * 18); // Aumenta el espacio entre botones
   buttons.style.gap = newGap + "px";
   
-  const newMargin = 30 + (noCount * 12); // Aumenté a 12px
+  const newMargin = 30 + (noCount * 12); // Mueve todo hacia abajo
   buttons.style.marginTop = newMargin + "px";
   
+  // Mueve el botón rojo hacia la derecha
   const no = document.getElementById("no");
+  const moveRight = noCount * 25; // Se mueve 25px a la derecha por cada click
+  no.style.transform = `translateX(${moveRight}px)`;
   no.innerText = noTexts[Math.min(noCount, noTexts.length - 1)];
   
   document.getElementById("gif").src = "gifsad.gif";
