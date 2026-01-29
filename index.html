@@ -25,12 +25,12 @@
   }
 
   .buttons {
-    position: relative;
-    display: flex;
+    display: inline-flex;
     justify-content: center;
     align-items: center;
+    gap: 20px;
     margin-top: 10px;
-    height: 100px;
+    position: relative;
   }
 
   button {
@@ -41,13 +41,12 @@
     cursor: pointer;
     transition: transform 0.25s ease;
     white-space: nowrap;
+    position: relative;
   }
 
   #yes {
     background-color: #22c55e;
     color: white;
-    position: absolute;
-    left: calc(50% - 220px); 
     transform-origin: center;
     z-index: 1;
   }
@@ -55,10 +54,8 @@
   #no {
     background-color: #ef4444;
     color: white;
-    min-width: 180px; 
+    min-width: 120px;
     text-align: center;
-    position: absolute;
-    right: calc(50% - 220px); 
     z-index: 2;
   }
 
