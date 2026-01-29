@@ -17,7 +17,6 @@
     width: 260px;
     margin-bottom: 18px;
     border-radius: 16px;
-    transition: 0.3s ease;
   }
 
   h1 {
@@ -29,10 +28,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 80px;
+    gap: 90px;
     margin-top: 10px;
-    position: relative;
-    z-index: 5;
   }
 
   button {
@@ -41,7 +38,7 @@
     border: none;
     border-radius: 16px;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: transform 0.25s ease;
     white-space: nowrap;
   }
 
@@ -62,7 +59,7 @@
     height: 10px;
     top: -10px;
     animation: fall 3s linear forwards;
-    opacity: 0.9;
+    opacity: 0.95;
     pointer-events: none;
   }
 
@@ -78,9 +75,9 @@
 
 <img id="gif" src="gif1.gif">
 
-<h1>Will you be my Valentine?</h1>
+<h1 id="title">Will you be my Valentine?</h1>
 
-<div class="buttons">
+<div class="buttons" id="buttons">
   <button id="yes" onclick="yesClicked()">Yes</button>
   <button id="no" onclick="noClicked()">No</button>
 </div>
@@ -107,7 +104,7 @@ function noClicked() {
   noCount++;
 
   const yes = document.getElementById("yes");
-  yes.style.transform = `scale(${1 + noCount * 0.22})`;
+  yes.style.transform = `scale(${1 + noCount * 0.35})`; // MÁS DRAMÁTICO
 
   const no = document.getElementById("no");
   no.innerText = noTexts[Math.min(noCount, noTexts.length - 1)];
@@ -116,10 +113,14 @@ function noClicked() {
 }
 
 function yesClicked() {
-  // Cambia el gif
+  // BORRAR botones y título AL INSTANTE
+  document.getElementById("buttons").remove();
+  document.getElementById("title").remove();
+
+  // Cambiar gif inmediatamente
   document.getElementById("gif").src = "gif2.gif";
 
-  // Espera a que se vea el gif y el texto...
+  // Mostrar mensaje rápido
   setTimeout(() => {
     document.body.innerHTML = `
       <img src="gif2.gif" style="width:300px;border-radius:16px;"><br>
@@ -128,16 +129,16 @@ function yesClicked() {
       <p>Eres mi persona favorita en el mundoooo 🐧💘</p>
     `;
 
-    // Confeti JUSTO después del reveal
+    // CONFETI DESPUÉS DEL REVEAL
     setTimeout(() => {
       launchConfetti();
-    }, 200);
+    }, 150);
 
-  }, 1000);
+  }, 350);
 }
 
 function launchConfetti() {
-  for (let i = 0; i < 180; i++) {
+  for (let i = 0; i < 200; i++) {
     const confetti = document.createElement("div");
     confetti.classList.add("confetti");
 
@@ -159,4 +160,3 @@ function randomColor() {
 
 </body>
 </html>
-
