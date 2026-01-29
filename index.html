@@ -93,18 +93,18 @@ const noTexts = [
   "Elíaaaaas",
   "Ándaleeeeeeeee",
   "Poqueeeeeeeee",
-  "miiiiaaaaauuuuuuuuuu",
-  "Segurisisisisisisimo?",
-  "MIIIIIIAAAAAAAAUUU",
+  "miiiiaaauuuuuuu",
+  "Segurisisisisimo?",
+  "MIIIIAAAAAUUU",
   "😭😭😭😭😭😭😭😭😭",
-  "GGGGRRRRR"
+  "GGRRR"
 ];
 
 function noClicked() {
   noCount++;
 
   const yes = document.getElementById("yes");
-  yes.style.transform = `scale(${1 + noCount * 0.35})`; // MÁS DRAMÁTICO
+  yes.style.transform = `scale(${1 + noCount * 0.35})`; 
 
   const no = document.getElementById("no");
   no.innerText = noTexts[Math.min(noCount, noTexts.length - 1)];
@@ -113,23 +113,19 @@ function noClicked() {
 }
 
 function yesClicked() {
-  // BORRAR botones y título AL INSTANTE
   document.getElementById("buttons").remove();
   document.getElementById("title").remove();
 
-  // Cambiar gif inmediatamente
   document.getElementById("gif").src = "gif2.gif";
 
-  // Mostrar mensaje rápido
   setTimeout(() => {
     document.body.innerHTML = `
       <img src="gif2.gif" style="width:300px;border-radius:16px;"><br>
-      <h1>YEEEEIII 💖</h1>
-      <h2>Te amo muchi, Elías guapo 😭✨</h2>
+      <h1>YEEEEIII <3</h1>
+      <h2>Te amo muchi, Elías guapoo</h2>
       <p>Eres mi persona favorita en el mundoooo 🐧💘</p>
     `;
 
-    // CONFETI DESPUÉS DEL REVEAL
     setTimeout(() => {
       launchConfetti();
     }, 150);
