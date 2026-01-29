@@ -13,7 +13,8 @@
     }
 
     img {
-      width: 260px;
+      width: 280px;
+      height: auto;
       margin-bottom: 20px;
       border-radius: 15px;
       transition: 0.3s ease;
@@ -23,21 +24,26 @@
       color: #ff4d88;
     }
 
+    #buttons {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 10px;
+    }
+
     button {
       font-size: 20px;
       padding: 15px 30px;
-      margin: 15px;
       border: none;
       border-radius: 12px;
       cursor: pointer;
-      position: relative;
-      z-index: 2;
+      transition: transform 0.3s ease;
+      min-width: 120px;
     }
 
     #yes {
       background-color: #ff4d88;
       color: white;
-      transition: transform 0.3s ease;
     }
 
     #no {
@@ -53,7 +59,7 @@
 
   <h1>Will you be my Valentine?</h1>
 
-  <div>
+  <div id="buttons">
     <button id="yes" onclick="yesClicked()">Yes</button>
     <button id="no" onclick="noClicked()">No</button>
   </div>
@@ -79,7 +85,7 @@
       noCount++;
 
       const yesButton = document.getElementById("yes");
-      yesButton.style.transform = `scale(${1 + noCount * 0.35})`;
+      yesButton.style.transform = `scale(${1 + noCount * 0.25})`;
 
       const noButton = document.getElementById("no");
       noButton.innerText = noTexts[Math.min(noCount, noTexts.length - 1)];
@@ -91,7 +97,7 @@
     function yesClicked() {
       document.body.innerHTML = `
         <img src="gif2.gif" style="width:280px;border-radius:15px;"><br>
-        <h1>YEEEEIII</h1>
+        <h1>YEEEEIII<3</h1>
         <h2>Te amo muchi, Elías guapo</h2>
         <p>Eres mi persona favorita en el mundoooo</p>
       `;
