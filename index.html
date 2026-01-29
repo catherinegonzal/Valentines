@@ -39,7 +39,6 @@
   }
   
   .buttons {
-    position: relative;
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -71,27 +70,28 @@
     transform: translateY(0);
   }
   
-  #yes {
-    background-color: #22c55e;
-    color: white;
-    transform-origin: center center;
-    z-index: 1;
-    font-size: 28px;
-    font-weight: 700;
-    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
-  }
+ #yes {
+  background-color: #22c55e;
+  color: white;
+  transform-origin: center center;
+  z-index: 1;
+  font-size: 28px;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+}
 
-  #no {
-    background-color: #ef4444;
-    color: white;
-    min-width: 140px;
-    text-align: center;
-    z-index: 2;
-    font-size: 18px;
-    font-weight: 500;
-    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
-  }
+#no {
+  background-color: #ef4444;
+  color: white;
+  min-width: 140px;
+  text-align: center;
+  z-index: 2;
+  font-size: 18px;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
   
+
   
   .confetti {
     position: fixed;
@@ -125,12 +125,13 @@
     }
   }
   
-  .success-container h1 {
-    font-size: 48px;
-    color: #22c55e;
-    margin: 20px 0;
-    text-shadow: 0 2px 10px rgba(34, 197, 94, 0.3);
-  }
+.success-container h1 {
+  font-size: 48px;
+  color: #ec4899;
+  margin: 20px 0;
+  text-shadow: 0 2px 12px rgba(236, 72, 153, 0.35);
+}
+
   
   .success-container h2 {
     font-size: 28px;
@@ -176,10 +177,7 @@ const noTexts = [
   "Eeelííííííííaaaaaaas",
   "GGGGRRRRRRRR",
   "Amor dale que siiii",
-  "GGGGRRRRRRRR",
- "Mi amooor ándale",
- "Dale yes of course my horse",
- "GGGRRRRR"
+  "GGGGRRRRRRRR"
 ];
 
 function noClicked() {
@@ -189,16 +187,13 @@ function noClicked() {
   yes.style.transform = `scale(${scale})`;
   
   const buttons = document.getElementById("buttons");
-  const newGap = 20 + (noCount * 18); // Aumenta el espacio entre botones
+  const newGap = 20 + (noCount * 18); // Aumenté a 18px para más separación
   buttons.style.gap = newGap + "px";
   
-  const newMargin = 30 + (noCount * 12); // Mueve todo hacia abajo
+  const newMargin = 30 + (noCount * 12); // Aumenté a 12px
   buttons.style.marginTop = newMargin + "px";
   
-  // Mueve el botón rojo hacia la derecha
   const no = document.getElementById("no");
-  const moveRight = noCount * 25; // Se mueve 25px a la derecha por cada click
-  no.style.transform = `translateX(${moveRight}px)`;
   no.innerText = noTexts[Math.min(noCount, noTexts.length - 1)];
   
   document.getElementById("gif").src = "gifsad.gif";
