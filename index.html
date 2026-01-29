@@ -10,6 +10,7 @@
     background-color: #ffffff;
     text-align: center;
     padding-top: 80px;
+    overflow: hidden;
   }
 
   img {
@@ -50,6 +51,21 @@
     background-color: #b91c1c;
     color: white;
   }
+
+  .confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    top: -10px;
+    animation: fall 3s linear forwards;
+    opacity: 0.9;
+  }
+
+  @keyframes fall {
+    to {
+      transform: translateY(110vh) rotate(360deg);
+    }
+  }
 </style>
 </head>
 
@@ -73,11 +89,12 @@ const noTexts = [
   "Elías 😭",
   "A ver piénsalo de nuevo",
   "Elíaaaaas",
-  "Ándaleeeeee",
-  "Poqueeeeeee",
-  "miiiiaaaauuuu",
-  "Segurisisisimo?",
-  "MIIIIIIAAAAAUU",
+  "Ándaleeeeeeeee",
+  "Poqueeeeeeeee",
+  "miiiiaaaaauuuuuuuuuu",
+  "Segurisisisisisisimo?",
+  "MIIIIIIAAAAAAAAUUU",
+  "😭😭😭😭😭😭😭😭😭",
   "GGGGRRRRR"
 ];
 
@@ -94,12 +111,36 @@ function noClicked() {
 }
 
 function yesClicked() {
-  document.body.innerHTML = `
-    <img src="gif2.gif" style="width:240px;border-radius:12px;"><br>
-    <h1>YEEEEIII<3</h1>
-    <h2>Te amo muchi, Elías guapo</h2>
-    <p>Eres mi persona favorita en el mundoooo</p>
-  `;
+  launchConfetti();
+
+  setTimeout(() => {
+    document.body.innerHTML = `
+      <img src="gif2.gif" style="width:240px;border-radius:12px;"><br>
+      <h1>YEEEEIII<3</h1>
+      <h2>Te amo muchi, Elías guapo</h2>
+      <p>Eres mi persona favorita en el mundoooo</p>
+    `;
+  }, 1200);
+}
+
+function launchConfetti() {
+  for (let i = 0; i < 120; i++) {
+    const confetti = document.createElement("div");
+    confetti.classList.add("confetti");
+
+    confetti.style.left = Math.random() * window.innerWidth + "px";
+    confetti.style.backgroundColor = randomColor();
+    confetti.style.animationDuration = (2 + Math.random() * 2) + "s";
+
+    document.body.appendChild(confetti);
+
+    setTimeout(() => confetti.remove(), 3000);
+  }
+}
+
+function randomColor() {
+  const colors = ["#ff4d6d", "#fbbf24", "#22c55e", "#3b82f6", "#a855f7"];
+  return colors[Math.floor(Math.random() * colors.length)];
 }
 </script>
 
