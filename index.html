@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Will you be my Valentine?</title>
-
 <style>
   body {
     font-family: Arial, sans-serif;
@@ -12,26 +11,22 @@
     padding-top: 70px;
     overflow: hidden;
   }
-
   img {
     width: 260px;
     margin-bottom: 18px;
     border-radius: 16px;
   }
-
   h1 {
     font-size: 28px;
     margin-bottom: 25px;
   }
-
   .buttons {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* Cambiado de center a flex-start */
     gap: 20px;
     margin-top: 10px;
   }
-
   button {
     padding: 16px 34px;
     font-size: 20px;
@@ -41,20 +36,18 @@
     transition: all 0.25s ease;
     white-space: nowrap;
   }
-
   #yes {
     background-color: #22c55e;
     color: white;
     transform-origin: top right; 
   }
-
   #no {
     background-color: #ef4444;
     color: white;
     min-width: 120px;
     text-align: center;
+    align-self: center; /* Esto mantiene el botón No centrado verticalmente */
   }
-
   .confetti {
     position: fixed;
     width: 10px;
@@ -64,7 +57,6 @@
     opacity: 0.95;
     pointer-events: none;
   }
-
   @keyframes fall {
     to {
       transform: translateY(110vh) rotate(360deg);
@@ -72,21 +64,15 @@
   }
 </style>
 </head>
-
 <body>
-
 <img id="gif" src="gif1.gif">
-
 <h1 id="title">Will you be my Valentine?</h1>
-
 <div class="buttons" id="buttons">
   <button id="yes" onclick="yesClicked()">Yes</button>
   <button id="no" onclick="noClicked()">No</button>
 </div>
-
 <script>
 let noCount = 0;
-
 const noTexts = [
   "Seguro?",
   "Seguroo?",
@@ -109,25 +95,18 @@ const noTexts = [
   "Amor dale que siiii",
   "GGGGRRRRRRRR"
 ];
-
 function noClicked() {
   noCount++;
-
   const yes = document.getElementById("yes");
   yes.style.transform = `scale(${1 + noCount * 0.35})`;
-
   const no = document.getElementById("no");
   no.innerText = noTexts[Math.min(noCount, noTexts.length - 1)];
-
   document.getElementById("gif").src = "gifsad.gif";
 }
-
 function yesClicked() {
   document.getElementById("buttons").remove();
   document.getElementById("title").remove();
-
   document.getElementById("gif").src = "gif2.gif";
-
   setTimeout(() => {
     document.body.innerHTML = `
       <img src="gif2.gif" style="width:320px;border-radius:16px;"><br>
@@ -135,34 +114,26 @@ function yesClicked() {
       <h2>Te amo muchi Elías guapo</h2>
       <p>Eres mi persona favorita en el mundo mundial universal</p>
     `;
-
     setTimeout(() => {
       launchConfetti();
     }, 120);
-
   }, 200);
 }
-
 function launchConfetti() {
   for (let i = 0; i < 200; i++) {
     const confetti = document.createElement("div");
     confetti.classList.add("confetti");
-
     confetti.style.left = Math.random() * window.innerWidth + "px";
     confetti.style.backgroundColor = randomColor();
     confetti.style.animationDuration = (2 + Math.random() * 2) + "s";
-
     document.body.appendChild(confetti);
-
     setTimeout(() => confetti.remove(), 3000);
   }
 }
-
 function randomColor() {
   const colors = ["#ff4d6d", "#fbbf24", "#22c55e", "#3b82f6", "#a855f7"];
   return colors[Math.floor(Math.random() * colors.length)];
 }
 </script>
-
 </body>
 </html>
